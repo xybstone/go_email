@@ -5,6 +5,7 @@ import (
 	"net/smtp"
 	"regexp"
 	"strings"
+	"errors"
 )
 
 var (
@@ -25,8 +26,9 @@ func ValidEmail(in string) bool {
 func SendEmail(to, subject, body string) error {
 	vaild := ValidEmail(to)
 	if !vaild {
-		log.Error("Invalid email " + to)
-		return
+		errMsg := "Invalid email " + to
+		log.Error(errMsg)
+		return errors.New(errMsg)
 	}
 
 	smtp_address := Smtp_host + ":" + Smtp_port
