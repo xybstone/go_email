@@ -22,7 +22,7 @@ func ValidEmail(in string) bool {
 }
 
 //发送电子邮件
-func SendEmail(to, subject, body string) {
+func SendEmail(to, subject, body string) error {
 	vaild := ValidEmail(to)
 	if !vaild {
 		log.Error("Invalid email " + to)
@@ -41,4 +41,5 @@ func SendEmail(to, subject, body string) {
 	if err != nil {
 		log.Error("SendMail : %v", err)
 	}
+	return err
 }
