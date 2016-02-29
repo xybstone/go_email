@@ -18,7 +18,7 @@ var (
 
 //检验图纸有效性
 func ValidEmail(in string) bool {
-	matched, _ := regexp.MatchString(`^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$`, in)
+	matched, _ := regexp.MatchString(`^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$`, in)
 	return matched
 }
 
